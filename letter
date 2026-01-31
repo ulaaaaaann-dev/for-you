@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: #1b1b1b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Special Elite', cursive;
+}
+
+/* NAME INPUT — OLD PAPER STYLE */
+.name-box {
+    background: #f3e7c3; /* old paper base */
+    padding: 30px;
+    width: 360px;
+    text-align: center;
+    box-shadow:
+        inset 0 0 30px rgba(0,0,0,0.08),
+        0 10px 30px rgba(0,0,0,0.6);
+    border: 1px solid #d1b98b;
+    position: relative;
+}
+
+/* subtle paper lines */
+.name-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 100% 28px;
+    pointer-events: none;
+}
+
+.name-box h2 {
+    color: #3a2d2d;
+    font-weight: normal;
+}
+
+/* INPUT — handwritten paper feel */
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: 1px solid #c8b58a;
+    font-size: 16px;
+    background: #f9f1d6;
+    color: #3a2d2d;
+    font-family: 'Special Elite', cursive;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+}
+
+input::placeholder {
+    color: #b6a87d;
+    font-style: italic;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* BUTTON — soft vintage */
+button {
+    margin-top: 15px;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #c8b58a;
+    background: #e6d7a3;
+    color: #3a2d2d;
+    font-family: 'Special Elite', cursive;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #dccb8f;
+}
+
+/* SCENE */
+.scene {
+    display: none;
+    position: relative;
+    width: 800px;
+    height: 600px;
+}
+
+/* ENVELOPE */
+.envelope {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    height: 260px;
+    background: #e3d0a1;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    transition: opacity 1.5s ease;
+    z-index: 2;
+}
+
+/* FLAP */
+.flap {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 210px solid transparent;
+    border-right: 210px solid transparent;
+    border-top: 130px solid #d1b98b;
+    transform-origin: top;
+    transition: transform 1.2s ease;
+}
+
+/* HEART */
+.seal {
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 34px;
+    cursor: pointer;
+    z-index: 3;
+    transition: opacity 0.6s ease;
+}
+
+/* LETTER PAPER */
+.letter {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(200px);
+    width: 650px;
+    background: #f6ebc8;
+    color: #3a2d2d;
+    padding: 40px;
+    line-height: 1.8;
+    font-size: 16px;
+    box-shadow:
+        inset 0 0 40px rgba(0,0,0,0.08),
+        0 15px 35px rgba(0,0,0,0.6);
+    opacity: 0;
+    transition: transform 2s ease, opacity 2s ease;
+    z-index: 1;
+}
+
+/* SIMPLE OLD PAPER DESIGN */
+.letter::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 100% 28px;
+    pointer-events: none;
+}
+
+/* OPEN STATES */
+.open .flap {
+    transform: rotateX(180deg);
+}
+
+.open .seal {
+    opacity: 0;
+}
+
+.open .letter {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.fade-envelope {
+    opacity: 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAME INPUT -->
+<div class="name-box" id="nameSection">
+    <h2>Before you read this</h2>
+    <input type="text" id="nameInput" placeholder="Your name… just for me 🤍">
+    <button onclick="showEnvelope()">Continue</button>
+</div>
+
+<!-- SCENE -->
+<div class="scene" id="scene">
+
+    <!-- LETTER -->
+    <div class="letter">
+    <strong>For you, <span id="nameHere"></span></strong><br><br>
+
+    <p>
+        It’s so hard for me that I don’t have you anymore, I really want to win you back, 
+        but I guess ayaw mo na talaga and you’re happy and okay na rin? because no matter 
+        what I tell myself na wala na nga talaga and forget everything about you, kaso 
+        wala eh natatalo pa rin ako. I always think about you, I still want and love you, 
+        I still care for you kahit hindi ko man sabihin, I always do.
+    </p>
+
+    <p>
+        yung time na nakita ko yung acc mo na hindi na naka deact, I’ll always stalked you, 
+        and nung nakita ko na may ngl ka, I send you a message yung “listen to this song 
+        Sa bawat sandali by AmielSol and song from Michael Learns to Rock” that’s from me, 
+        sending a message to your ngl just like before. Like I said, I want to win you back, gustong gusto ko sabihin yun sayo nung time 
+        na nag message ka sakin sa ig, kaso naduwag ako eh.
+    </p>
+
+    <p>
+        remember yung last message mo sakin na dapat mag explain ako? this is my response.
+        “find someone who will give what I deserve or someone who will be better for me” 
+        na naman?? lagi na lang, me with someone rn? fuck, hanggang ngayon ikaw pa rin naman, 
+        wala namang pinagbago don. I’m always asking, can you be that someone kasi baka pwede 
+        naman ikaw na lang yun eh, bukod sa mga friends ko, ikaw lang din tumanggap sakin kung 
+        ano ako, even my childish side na hindi ko naman talaga nailalabas kasi nahihiya ako 
+        pero sayo okay lang. I lied when someone asked me if I still love you, I said hindi 
+        pero oo pa rin at never naman nawala yun, 1 year at impossibleng mawala lang yun 
+        and sayo lang din ako naging sigurado at seryoso non.
+    </p>
+
+    <p>
+        hindi naman ako humihingi ng kapalit sa mga efforts ko eh, kasi hindi naman labag sakin yun, 
+        and if it is for you I would, because I do and always love you💗💗💗
+    </p>
+</div>
+
+
+
+   <!-- ENVELOPE -->
+<div class="envelope" id="envelope">
+    <div class="flap"></div>
+    <div class="instruction" style="position:absolute; top:20px; width:100%; text-align:center; color:#5a3e1a; font-family:'Special Elite', cursive; font-size:16px;">
+        Click the yellow heart to open the letter
+    </div>
+    <div class="seal" onclick="openEnvelope()">💛</div>
+</div>
+
+
+</div>
+
+<script>
+function showEnvelope() {
+    const name = document.getElementById("nameInput").value.trim();
+    if (!name) {
+        alert("Please enter your name.");
+        return;
+    }
+
+    document.getElementById("nameHere").textContent = name;
+    document.getElementById("nameSection").style.display = "none";
+    document.getElementById("scene").style.display = "block";
+}
+
+function openEnvelope() {
+    const scene = document.getElementById("scene");
+    const envelope = document.getElementById("envelope");
+
+    scene.classList.add("open");
+
+    setTimeout(() => {
+        envelope.classList.add("fade-envelope");
+    }, 1800);
+}
+</script>
+
+</body>
+</html>
